@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include "list.h"
 
-list *list_create()
+List *list_create()
 {
   List *l = malloc(sizeof(List));
   if(!l)
@@ -110,7 +110,7 @@ void list_push(List *l, void *obj, void (*rmfunct)(void*))
 }
 
 
-void *list_dequeue(list *l) 
+void *list_dequeue(List *l) 
 {
   List_node *n;
   void *obj;
@@ -136,7 +136,7 @@ void *list_dequeue(list *l)
 }
 
 
-void *list_pop(list *l)
+void *list_pop(List *l)
 {
   return list_dequeue(l);
 }

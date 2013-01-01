@@ -71,11 +71,11 @@ void engine_input_refresh()
     {
     case ENGINE_INPUT_KEYPRESSED:
       *(b->var) = engine_input_pressed(keystate, b->key, b->prevstate);
-      b->prevstate = keystate[key];
+      b->prevstate = keystate[b->key];
       break;
     case ENGINE_INPUT_KEYRELEASED:
       *(b->var) = engine_input_released(keystate, b->key, b->prevstate);
-      b->prevstate = keystate[key];
+      b->prevstate = keystate[b->key];
       break;
     case ENGINE_INPUT_KEYDOWN:
       *(b->var) = engine_input_keydown(keystate, b->key);
