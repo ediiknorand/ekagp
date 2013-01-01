@@ -19,14 +19,25 @@ typedef struct
   void *(*unload_fnc)(void*);
 
   int (*logic_fnc)(void*, Uint8*, double);
-  void (*render_fnc)(void*, double);
 
   void *data;
 } Engine_scene;
 
+typedef struct
+{
+  int loaded;
+  void *(*load_fnc)(void*);
+  void *(*unload_fnc)(void*);
+
+  void (*render_fnc)(void*, void*, double);
+
+  void *data;
+} Engine_resource;
+
 /* Global Vars */
 Engine_screen engine_screen;
 Engine_scene engine_scene;
+Engine_resource engine_resource;
 
 /* Init functions */
 void engine_init_sdl();
@@ -40,8 +51,8 @@ void engine_main_loop();
 int engine_logic_refresh(double delta);
 void engine_render_refresh(double delta);
 
-/* Scene Loader Function */
-void engine_load_scene(void *(*loadfnc)(void*), void *(*unloadfnc)(void*), 
-                       int (*logicfnc)(void*,Uint8*,double), void (*renderfnc)(void*,double));
+/* Loader Function */
+void engine_load_scene(void *(*loadfnc)(void*), void *(*unloadfnc)(void*), int (*logicfnc)(void*,Uint8*,double));
+void engine_load_resource(void *(*loadfnc)(void*), void *(*unloadfnc)(void*), void (*renderfnc)(void*,void*,double));
 
 #endif

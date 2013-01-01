@@ -1,4 +1,5 @@
 #include "core.h"
+#include "input.h"
 #include "text.h"
 #include "render.h"
 #include "sound.h"
