@@ -18,7 +18,7 @@ typedef struct
   void *(*load_fnc)(void*);
   void *(*unload_fnc)(void*);
 
-  int (*logic_fnc)(void*, Uint8*, double);
+  int (*logic_fnc)(void*, double);
 
   void *data;
 } Engine_scene;
@@ -52,7 +52,7 @@ int engine_logic_refresh(double delta);
 void engine_render_refresh(double delta);
 
 /* Loader Function */
-void engine_load_scene(void *(*loadfnc)(void*), void *(*unloadfnc)(void*), int (*logicfnc)(void*,Uint8*,double));
+void engine_load_scene(void *(*loadfnc)(void*), void *(*unloadfnc)(void*), int (*logicfnc)(void*,double));
 void engine_load_resource(void *(*loadfnc)(void*), void *(*unloadfnc)(void*), void (*renderfnc)(void*,void*,double));
 
 #endif
